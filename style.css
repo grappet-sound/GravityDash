@@ -1,0 +1,97 @@
+body{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+#gameBoard{
+    border: 1px solid black;
+    width: 960px;
+    height: 540px;
+    position: relative;
+    overflow: hidden;
+}
+#background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(./background.svg);
+    background-size: cover;
+    background-position: center;
+    animation: bg-move 8s linear infinite;
+}
+#background::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    background: url(./background.svg);
+    background-size: cover;
+    background-position: center;
+}
+
+@keyframes bg-move {
+    0%{
+        left: 0;
+    }
+    100%{
+        left: -100%;
+    }
+}
+
+#canvas{
+    width: 100%;
+    height: 100%;
+    border: 2px solid white;
+    position: relative;
+    z-index: 5;
+    box-sizing: border-box;
+}
+#message{
+    position: absolute;
+    width: 100%;
+    z-index: 6;
+    height: 100%;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    animation: failure 3s linear infinite;
+}
+.hidden{
+    visibility: hidden;
+}
+.visible{
+    visibility: visible;
+}
+@keyframes failure{
+    0%{
+        color: red;
+    }
+    20%{
+        color: orange;
+    }
+    30%{
+        color: yellow;
+    }
+    40%{
+        color: green;
+    }
+    60%{
+        color: rgb(125, 125, 255);
+    }
+    80%{
+        color: rgb(216, 0, 216);
+    }
+    100%{
+        color: rgb(255, 83, 112);
+    }
+}
